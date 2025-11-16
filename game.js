@@ -3,7 +3,7 @@ const player = document.getElementById("player");
 
 
 let playerX = 175;
-let speed = 8;
+let speed = 15;
 let score = 0;
 const sushiImages = ["images/sushi1.png","images/sushi2.png","images/sushi3.png","images/sushi4.png","images/sushi5.png","images/sushi6.png","images/sushi7.png","images/sushi8.png"];
 const catchSound = new Audio("catch.mp3");
