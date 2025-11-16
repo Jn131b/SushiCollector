@@ -1,0 +1,2 @@
+# SushiCollector
+Collect falling sushi
