@@ -76,10 +76,15 @@ const sushiwidth = sushi.offsetWidth;
 
 }
 
+function startGame(){
+score = 0;
+let timeLeft = 30;
+document.getElementById("score").textContent = `Score: ${score}`;
+document.getElementById("timer").textContent = `Time: ${timeLeft}`;
+
+
+
 const sushiSpawner = setInterval(createSushi, 1000);
-
-
- let timeLeft = 30;
 
   const timerElement = document.getElementById("timer");
   timerElement.textContent = `Time: ${timeLeft}`;
@@ -91,7 +96,15 @@ const sushiSpawner = setInterval(createSushi, 1000);
     clearInterval(countdown);
     alert(`Time's up! Your sushi is ${score}`);
     clearInterval(sushiSpawner)
+
+    setTimeout(() => {
+      startButton.disabled = false;
+    }, 2000);
   }
-  
-  
-  },1000)
+},1000)
+};
+const startButton = document.getElementById("startButton");
+startButton.addEventListener("click", () => {
+  startButton.disabled = true;
+  startGame();
+})
