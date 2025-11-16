@@ -1,0 +1,58 @@
+body {
+  text-align: center;
+  background: #f0f8ff;
+  font-family: Arial, sans-serif;
+}
+
+
+#game {
+  position: relative;
+  margin: 20px auto;
+  width: 90vw;
+  max-width: 800px;
+  height: 70vh;
+  max-height: 600px;
+  background: #df963e;
+  border: 3px solid #333;
+  overflow: hidden;
+}
+h1{
+  color: #df963e;
+  text-shadow: 2px 2px 4px #333;
+}
+#player {
+  position: absolute;
+  bottom: 20px;
+  width: 8vw;
+  max-width: 80px;
+  height: 8vw;
+  max-height: 80px;
+  background-image: url("images/chopticks.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+.sushi {
+  position: absolute;
+  top: -50px;
+  width: 6vw;
+  max-width: 100px;
+  height: 6vw;
+  max-height: 100px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.score{
+  color: #df963e;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#timer{
+  color: #df963e;
+  font-size: 24px;
+  margin-top: 5px;
+}
