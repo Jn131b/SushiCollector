@@ -23,9 +23,9 @@ h1{
 #player {
   position: absolute;
   bottom: 20px;
-  width: 8vw;
+  width: 15vw;
   max-width: 80px;
-  height: 8vw;
+  height: 15vw;
   max-height: 80px;
   background-image: url("images/chopticks.png");
   background-size: cover;
@@ -36,9 +36,9 @@ h1{
 .sushi {
   position: absolute;
   top: -50px;
-  width: 6vw;
+  width: 15vw;
   max-width: 100px;
-  height: 6vw;
+  height: 15vw;
   max-height: 100px;
   background-size: cover;
   background-position: center;
