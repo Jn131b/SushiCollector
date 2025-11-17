@@ -47,6 +47,7 @@ function createSushi() {
 const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
 sushi.style.backgroundImage = `url(${randomImg})`;
 const sushiwidth = sushi.offsetWidth;
+  game.appendChild(sushi);
   sushi.style.left = Math.random() * (gamewidth - sushiwidth) + "px";
   game.appendChild(sushi);
 
