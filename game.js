@@ -44,15 +44,16 @@ function createSushi() {
   const gamewidth = game.clientWidth;
   const sushi = document.createElement("div");
   sushi.classList.add("sushi");
-const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
-sushi.style.backgroundImage = `url(${randomImg})`;
-const sushiwidth = sushi.offsetWidth;
+  const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
+  sushi.style.backgroundImage = `url(${randomImg})`;
   game.appendChild(sushi);
+  const sushiwidth = sushi.offsetWidth;
+  
   const sushiMax = Math.max(0, gamewidth - sushiwidth);
   sushi.style.left = Math.random() * sushiMax + "px";
 
-  let sushiY = 0;
-  const fall = setInterval(() => {
+    let sushiY = 0;
+    const fall = setInterval(() => {
     sushiY += speed;
     sushi.style.top = sushiY + "px";
 
@@ -68,7 +69,7 @@ const sushiwidth = sushi.offsetWidth;
      return;
     }
 
-    if (sushiY > 650) {
+      if (sushiY > 650) {
       sushi.remove();
       clearInterval(fall);
       return;
