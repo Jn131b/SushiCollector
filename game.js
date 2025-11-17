@@ -48,8 +48,8 @@ const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
 sushi.style.backgroundImage = `url(${randomImg})`;
 const sushiwidth = sushi.offsetWidth;
   game.appendChild(sushi);
-  sushi.style.left = Math.random() * (0, gamewidth - sushiwidth) + "px";
-  game.appendChild(sushi);
+  const sushiMax = Math.Max(0, gamewidth - sushiwidth);
+  sushi.style.left = Math.random() * sushiMax + "px";
 
   let sushiY = 0;
   const fall = setInterval(() => {
