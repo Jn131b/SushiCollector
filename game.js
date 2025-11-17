@@ -47,13 +47,13 @@ function createSushi() {
   const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
   sushi.style.backgroundImage = `url(${randomImg})`;
   game.appendChild(sushi);
-  sushi.style.top = "-80";
+  sushi.style.top = "-80px";
   const sushiwidth = sushi.offsetWidth;
   
   const sushiMax = Math.max(0, gamewidth - sushiwidth);
   sushi.style.left = Math.random() * sushiMax + "px";
 
-    let sushiY = 0;
+    let sushiY = -80;
     const fall = setInterval(() => {
     sushiY += speed;
     sushi.style.top = sushiY + "px";
@@ -70,7 +70,7 @@ function createSushi() {
      return;
     }
 
-      if (sushiY > 650) {
+      if (sushiY > game.clientHeigh) {
       sushi.remove();
       clearInterval(fall);
       return;
