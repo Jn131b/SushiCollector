@@ -3,12 +3,22 @@ const player = document.getElementById("player");
 
 
 let playerX = 175;
-let speed = 11;
+let speed = 15;
 let score = 0;
-const sushiImages = ["images/sushi1.png","images/sushi2.png","images/sushi3.png","images/sushi4.png","images/sushi5.png","images/sushi6.png","images/sushi7.png","images/sushi8.png"];
+const sushiImages = [
+  {img:"images/sushi1.png", points: 2},
+  {img:"images/sushi2.png", points: 1},
+  {img:"images/sushi3.png", points: 3},
+  {img:"images/sushi4.png", points: 8},
+  {img:"images/sushi5.png", points: 4},
+  {img:"images/sushi6.png", points: 5},
+  {img:"images/sushi7.png",  points: 6},
+  {img:"images/sushi8.png", points: 7}
+];
 const catchSound = new Audio("catch.mp3");
-
-
+const bgMusic = new Audio("bgmusic.mp3");
+bgMusic.play();
+const win = new Audio("win.mp3");
 
 document.addEventListener("keydown", (e) => {
   const gamewidth = game.clientWidth;
@@ -44,17 +54,14 @@ function createSushi() {
   const gamewidth = game.clientWidth;
   const sushi = document.createElement("div");
   sushi.classList.add("sushi");
-  const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
-  sushi.style.backgroundImage = `url(${randomImg})`;
+const randomImg = sushiImages[Math.floor(Math.random() * sushiImages.length)];
+sushi.style.backgroundImage = `url(${randomImg.img})`;
+const sushiwidth = sushi.offsetWidth;
+  sushi.style.left = Math.random() * (gamewidth - sushiwidth) + "px";
   game.appendChild(sushi);
-  sushi.style.top = "-80px";
-  const sushiwidth = sushi.offsetWidth;
-  
-  const sushiMax = Math.max(0, gamewidth - sushiwidth);
-  sushi.style.left = Math.random() * sushiMax + "px";
 
-    let sushiY = -80;
-    const fall = setInterval(() => {
+  let sushiY = 0;
+  const fall = setInterval(() => {
     sushiY += speed;
     sushi.style.top = sushiY + "px";
 
@@ -62,7 +69,7 @@ function createSushi() {
     const sushiRect = sushi.getBoundingClientRect();
     
     if(sushiRect.left < playerRect.right && sushiRect.right > playerRect.left && sushiRect.top < playerRect.bottom && sushiRect.bottom > playerRect.top)
-    {score++
+    {score += randomImg.points
      document.getElementById("score").textContent = `score: ${score}`;
      sushi.remove();
      catchSound.play();
@@ -70,7 +77,7 @@ function createSushi() {
      return;
     }
 
-      if (sushiY > game.clientHeigh) {
+    if (sushiY > 650) {
       sushi.remove();
       clearInterval(fall);
       return;
@@ -96,11 +103,14 @@ const sushiSpawner = setInterval(createSushi, 1000);
     timerElement.textContent = `Time: ${timeLeft}`;
   
   if(timeLeft <= 0){
+    win.play();
+  
     clearInterval(countdown);
     alert(`Time's up! Your sushi is ${score}`);
     clearInterval(sushiSpawner)
 
     setTimeout(() => {
+      startButton.style.visibility = "visible";
       startButton.disabled = false;
     }, 2000);
   }
@@ -109,5 +119,10 @@ const sushiSpawner = setInterval(createSushi, 1000);
 const startButton = document.getElementById("startButton");
 startButton.addEventListener("click", () => {
   startButton.disabled = true;
+  startButton.style.visibility = "hidden";
+ 
   startGame();
+  
+  bgMusic.play().catch(e => console.log("Play error:", e));
+
 })
